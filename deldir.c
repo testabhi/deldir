@@ -192,8 +192,7 @@ bool deldir(const char * _restrict path, const char * _restrict starting_path, b
     return true;
 
     error:
-    if(full_path != NULL)
-        free(full_path);
+    free(full_path);
     return false;
 }
 
