@@ -119,10 +119,16 @@ bool deldir(const char * _restrict path, const char * _restrict starting_path, b
     char * _restrict full_path = NULL;
     DIR * _restrict handle;
     struct dirent * _restrict entry;
-    struct stat file;
+    struct stat * _restrict file = NULL;
 
     if(chdir(path) != 0) {
         perror("Could not change directory");
+        goto error;
+    }
+
+    file = malloc(sizeof(struct stat));
+    if(file == NULL) {
+        perror("Could not allocate memory");
         goto error;
     }
 
@@ -143,12 +149,12 @@ bool deldir(const char * _restrict path, const char * _restrict starting_path, b
         if(strcmp(entry->d_name, ".") == 0 || strcmp(entry->d_name, "..") == 0)
             continue;
 
-        if(lstat(entry->d_name, &file) != 0) {
+        if(lstat(entry->d_name, file) != 0) {
             perror("Could not stat file");
             goto error;
         }
 
-        if(S_ISDIR(file.st_mode)) {
+        if(S_ISDIR(file->st_mode)) {
             if(!quiet)
                 printf("Entering folder `%s'\n", entry->d_name);
             if(!deldir(entry->d_name, full_path, true)) {
@@ -188,11 +194,14 @@ bool deldir(const char * _restrict path, const char * _restrict starting_path, b
         goto error;
     }
 
+    free(file);
     free(full_path);
     return true;
 
     error:
+    free(file);
     free(full_path);
+
     return false;
 }
 
