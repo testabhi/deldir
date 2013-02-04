@@ -4,7 +4,7 @@ if [ "x$CC" = "x" ]; then
 fi
 
 if [ "x$CFLAGS" = "x" ]; then
-    export CFLAGS="-pedantic -Os -std=c99 -Wall"
+    export CFLAGS="-Os -pedantic -pipe -std=c99 -Wall"
 fi
 
 run() {
