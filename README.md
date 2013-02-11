@@ -44,13 +44,17 @@ contact me. If there is demand for it, I will investigate porting it with MinGW.
 
 ### Building
 
-Running `./build.sh` from the `deldir` source folder will build `deldir` for
-you. If you cannot run `build.sh` for whatever reason, you should be able to
-manually compile `deldir` with something similar to:
+Running `make` from the `deldir` source folder will build `deldir` for you. If
+you cannot run `make` for whatever reason, you should be able to manually
+compile `deldir` with something similar to:
 
 `cc -o deldir deldir.c`
 
 Replace `cc` with your compiler's name if it's not usable as `cc`.
+
+Note that `make` will run `strip` on the compiled executable by default. If you
+don't want `strip` to be run (perhaps because `strip` removes debug symbols),
+just run `make deldir` instead.
 
 ### Running
 
