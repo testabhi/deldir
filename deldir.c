@@ -299,8 +299,8 @@ void print_help(char *name) {
           "  -v                         print the version of deldir and exit\n"
           "  -y                         assume the confirmation to delete is answered with `yes'\n"
           , stderr);
-    fputs("deldir home page: <https://github.com/dririan/deldir>\n"
-          "Report deldir bugs at <https://github.com/dririan/deldir/issues>\n"
+    fputs("deldir home page: <http://0x3b.com/projects/deldir>\n"
+          "Report deldir bugs at <http://0x3b.com/projects/deldir/issues>\n"
           "deldir is licensed under the GNU General Public License (GPL) version 3 ONLY.\n"
           , stderr);
     fprintf(stderr, "Run `%s -v' for more information about licensing.\n", name);
