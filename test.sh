@@ -15,7 +15,7 @@ _mktemp() {
 
 _build() {
     echo -n " * Building deldir...           "
-    ./build.sh >/dev/null 2>/dev/null || export build_failed="yes"
+    make deldir >/dev/null 2>/dev/null || export build_failed="yes"
     if [ "$build_failed" = "yes" ]; then
         export test_error="Error building deldir"
         echo "[FAIL]"
