@@ -124,3 +124,6 @@ You may be able to work around this by increasing the size of the stack. With
 `bash`, for example, you can use `ulimit -s` to get or set the stack size.
 Search `bash`'s manpage for `ulimit` to get more details.
 
+However, you shouldn't run into the limit in practice. With stack size limit of
+8192 on an x86_64 machine, `deldir` can recurse 174470 times.
+
