@@ -19,8 +19,8 @@ _build() {
     if [ "$build_failed" = "yes" ]; then
         export test_error="Error building deldir"
         echo "[FAIL]"
-        # Run build.sh again to show the compiler error(s)
-        ./build.sh >/dev/null
+        # Run make again to show the compiler error(s)
+        make deldir >/dev/null
         return 1
     else
         echo "[ ok ]"
