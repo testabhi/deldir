@@ -31,7 +31,7 @@
 #define BUFFER_SIZE 8
 #define USAGE_HEADER "Usage: %s [-h] [-q] [-s] [-v] [-y]\n"
 #define USAGE_HELP "Try `%s -h' for more information.\n"
-#define VERSION "0.1"
+#define VERSION "0.2-git"
 
 /* C99 and up supports the `restrict' keyword
  * (see https://en.wikipedia.org/wiki/Restrict) */
