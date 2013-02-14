@@ -14,6 +14,10 @@ _mktemp() {
 }
 
 _build() {
+    if [ "${SKIP_BUILD}" = "yes" ]; then
+        return 0
+    fi
+
     echo -n " * Building deldir...           "
     make deldir >/dev/null 2>/dev/null || export build_failed="yes"
     if [ "$build_failed" = "yes" ]; then
@@ -47,7 +51,7 @@ _mktree() {
 
 _deldir() {
     echo " * Running deldir...               "
-    ./deldir -y ${DESTDIR} || export deldir_failed="yes"
+    ${DELDIR_BIN} -y ${DESTDIR} || export deldir_failed="yes"
     echo -n " * Running deldir...            "
     if [ "$deldir_failed" = "yes" ]; then
         export test_error="Error running deldir"
@@ -96,6 +100,13 @@ _print_results() {
         echo "FAILED (${test_error})"
     fi
 }
+
+if [ "x$1" = "x" ]; then
+    export DELDIR_BIN="./deldir"
+else
+    export DELDIR_BIN="$1"
+    export SKIP_BUILD="yes"
+fi
 
 _mktemp && _build && _mktree && _deldir && _print_remaining
 _clean_up ; _print_results

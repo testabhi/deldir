@@ -78,14 +78,17 @@ sure you want to run `deldir`, type `yes` and press enter.
 You should run the self-test that is included with the source and binary
 distributions before using it, especially if you compiled `deldir` yourself! To
 run the self-test, make sure `test.sh` and `deldir` are in the same folder, then
-run `test.sh`. Make sure the target is in `/tmp` (it should be
-`/tmp/deldir-test.XXXXXXXXXX`, replacing `X` with random characters). At the end
-of the self-test you should see the line `Self-test PASSED`. If you instead see
-`Self-test FAILED`, or *anything else* at the end of the output, **DO NOT** use
-that copy of `deldir`! Please contact me as soon as possible and send me a copy
-of the self-test output. It's possible that `deldir` is working but something in
-your environment caused the failure, but with a program for mass deletion it's
-best to err on the side of caution.
+run `./test.sh`. If the `deldir` binary isn't called `deldir` (or is in another
+folder), run `./test.sh $DELDIR` (replacing `$DELDIR` with the path to `deldir`,
+such as `./test.sh /usr/local/bin/deldir` or `./test.sh ./deldir-foo`). Make
+sure the target is in `/tmp` (it should be `/tmp/deldir-test.XXXXXXXXXX`,
+replacing `X` with random characters). At the end of the self-test you should
+see the line `Self-test PASSED`. If you instead see `Self-test FAILED`, or
+*anything else* at the end of the output, **DO NOT** use that copy of `deldir`!
+Please contact me as soon as possible and send me a copy of the self-test
+output. It's possible that `deldir` is working but something in your environment
+caused the failure, but with a program for mass deletion it's best to err on the
+side of caution.
 
 `deldir` requires only one argument on the command line: the path to the folder
 to delete. The path may be absolute or relative; `deldir` will show the full
