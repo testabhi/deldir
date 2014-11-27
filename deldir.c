@@ -29,7 +29,7 @@
 #include <unistd.h>
 
 #define BUFFER_SIZE 8
-#define USAGE_HEADER "Usage: %s [-h] [-q] [-s] [-v] [-y]\n"
+#define USAGE_HEADER "Usage: %s [-h] [-q] [-s] [-v] [-y] <dir Path>\n"
 #define USAGE_HELP "Try `%s -h' for more information.\n"
 #define VERSION "0.2-git"
 
